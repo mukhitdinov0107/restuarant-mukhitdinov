@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="styles/style.css">
+    <title>Flamingo Restuarant</title>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+    <script type='text/javascript' src='script/script.js'></script>
+    <script>
+        $(function () {
+
+            let num = 51; // the total number of images
+
+            // Preload all the images into hidden div
+            for (let i = 1; i <= num; i++) {
+                let img = document.createElement('img');
+                img.src = `images/${i}.jpg`;
+                document.getElementById('preload-imgs').appendChild(img);
+            }
+
+            // Control swipes using jquery.touchSwipe.min.js
+            // http://labs.rampinteractive.co.uk/touchSwipe/
+            let swipeOptions =
+                {
+                    triggerOnTouchEnd: true,
+                    swipeStatus: swipeStatus,
+                    allowPageScroll: "vertical",
+                    threshold: 75
+                };
+
+            $(function () {
+                imgs = $(".img-container"); // the element that will be swipeable
+                imgs.swipe(swipeOptions);
+            });
+
+            function swipeStatus(event, phase, direction, distance) {
+                let duration = 0;
+                if (direction === "left") {
+                    changeImg(distance);
+                } else if (direction === "right") {
+                    changeImgR(-distance);
+                }
+            }
+
+            function changeImg(imgNum) {
+
+                // spread it out so it doesn't load new img every single px of swipe distance
+                imgNum = Math.floor(imgNum / 8);
+
+                if (imgNum < 1) {
+                    imgNum += num;
+                }
+                if (imgNum > num) {
+                    imgNum -= num;
+                }
+
+                // change the image src
+                document.getElementById("myImg").src =  `images/${imgNum}.jpg`;
+
+            }
+
+            function changeImgR(imgNum) {
+
+                // spread it out so it doesn't load new img every single px of swipe distance
+                imgNum = Math.floor(imgNum / 8);
+
+                let num2 = -Math.abs(num);
+                if (imgNum > num2) {
+                    imgNum += num;
+                }
+                if (imgNum <= num2) {
+                    imgNum += num * 2;
+                }
+
+                // change the image src
+                document.getElementById("myImg").src = `images/${imgNum}.jpg`;
+            }
+        })
+    </script>
+
+</head>
+<body>
+<div class="wrapper">
+    <div class="navbar">
+        <img src="images/logo.png" alt="" width="160px">
+        <nav>
+
+            <a id="home" class="link" src="home">ГЛАВНАЯ</a>
+            <a class="link soft">SOFIT EVENT HOUSE</a>
+            <a class="link">МЕРОПРИЯТИЯ</a>
+            <a class="link">ТУРИСТАМ</a>
+            <a class="link">ДЛЯ АГЕНТСТВ</a>
+        </nav>
+    </div>
+    <div class="services">
+        <div class="corporate">
+            <div class="corporate-content">
+                <div class="corporate-text">
+                    <h1 class="serh">КОРПОРАТИВЫ</h1>
+                    <p class="serp">Отметьте лучший праздник
+                        в лучшем ресторане Намангана!</p>
+                </div>
+            </div>
+        </div>
+        <div class="weddings">
+            <div class="weddings-content">
+                <div class="weddings-text">
+                    <h1 class="serh">СВАДЬБЫ</h1>
+                    <p class="serp">Отметьте лучший праздник
+                        в лучшем ресторане Намангана!</p>
+                </div>
+            </div>
+        </div>
+        <div class="night">
+            <div class="night-content">
+                <div class="night-text">
+                    <h1 class="serh">ЗВАНЫЕ ВЕЧЕРА</h1>
+                    <p class="serp">Отметьте лучший праздник
+                        в лучшем ресторане Намангана!</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="about">
+        <h1>О РЕСТОРАНЕ</h1>
+        <img src="images/logo.png" width="90px" alt="">
+        <div class="container">
+            <div class="img-container">
+                <div class="img360"><img id="myImg" width="300px" src="images/1.jpg"
+                                         alt="alt"/></div>
+            </div>
+            <div id="preload-imgs" style="display: none"></div>
+        </div>
+
+    </div>
+</div>
+<script>
+    const links = document.querySelector(".link")
+    const active_url = document.getElementById("home")
+    if (active_url.id === "home") {
+        links.style.color = "#D1A954"
+    }
+</script>
+<script type="text/javascript">
+
+    let _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-19095819-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function () {
+        let ga = document.createElement('script');
+        ga.type = 'text/javascript';
+        ga.async = true;
+        ga.src = ('https:' === document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        let s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(ga, s);
+    })();
+
+</script>
+</body>
+</html>

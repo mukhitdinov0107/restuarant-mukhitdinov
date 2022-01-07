@@ -1,0 +1,120 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap');
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.wrapper {
+    width: 100%;
+    height: 100%;
+}
+
+.navbar {
+    display: flex;
+    width: 100%;
+    height: 120px;
+    justify-content: center;
+    background-color: #fff;
+}
+
+nav {
+    width: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+nav a {
+    font-size: 13px;
+    color: #000;
+    font-family: Montserrat;
+}
+
+.soft {
+    color: #D1A954;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 16px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+}
+
+/*navbar navbar navbar navbar navbar navbar navbar navbar*/
+.services {
+    width: 100%;
+    height: 550px;
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 50px;
+}
+
+.corporate, .weddings, .night {
+    width: 380px;
+    height: 450px;
+}
+
+.corporate {
+    position: relative;
+    background-image: url("/images/corporate.png");
+    background-size: cover;
+}
+
+.weddings {
+    position: relative;
+    background-image: url("/images/weddings.png");
+    background-size: cover;
+}
+
+.night {
+    position: relative;
+    background-image: url("/images/night.png");
+    background-size: cover;
+}
+
+.corporate-content, .weddings-content, .night-content {
+    position: absolute;
+    width: 100%;
+    height: 130px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(209, 169, 84, 0.9);
+    bottom: 0;
+}
+
+.night-text, .weddings-text, .corporate-text {
+    width: 93%;
+    height: 100px;
+    display: flex;
+    flex-direction: column;
+    font-family: Montserrat;
+    color: #ffffff;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+.serh {
+    font-size: 25px;
+    font-weight: normal;
+}
+
+.serp {
+    font-size: 12px;
+    margin-top: 10px;
+}
+
+/*about /* about /* about /* about */
+.about {
+    width: 100%;
+    text-align: center;
+}
+
+.about h1 {
+    font-family: Montserrat;
+    font-weight: normal;
+    color: #222222;
+}
